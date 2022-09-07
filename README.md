@@ -1,4 +1,4 @@
-# Practica 03 KD Tree
+# Practica 04 KD Tree
 | DOCENTE | CARRERA | CURSO |
 | :-: | :-: | :-: |
 | Vicente Machaca Arceda | Maestr
