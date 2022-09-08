@@ -89,6 +89,18 @@ function distanceSquared(point1, point2) {
 }
 
 function closest_point_brute_force(points, point) {
+    var distance = null;
+    var best_distance = null;
+    var best_point = null;
+    for (let i = 0; i < points.length; i++) {
+        distance = distanceSquared(points[i], point);
+        // console.log(distance);
+        if (best_distance === null || distance < best_distance) {
+            best_distance = distance;
+            //best_point = { 'point': points[i], 'distance': distance }
+            best_point = points[i];
+        }
+    } return best_point;
 }
 
 function naive_closest_point(node, point, depth = 0, best = null) {
