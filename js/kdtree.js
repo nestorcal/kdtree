@@ -142,6 +142,30 @@ function range_query_rec(node, ancho, alto, queue, depth = 0) {
 }
 
 
+//Consultas 
+var point = [140, 90]; //punto que pensamos buscar
 
+function dibujar_busqueda(data){
+    for (let i = 0; i < data.length; i++) {
+        fill(255, 0, 0);
+        // circle(x, height - y, 7); //200-y para q se dibuje apropiadamente
+        circle(data[i][0], height - data[i][1], 7); //200-y para q se dibuje apropiadamente
+        textSize(8);
+        text(data[i][0] + ',' + data[i][1], data[i][0] + 5, height - data[i][1]);//200-y para q se dibuje apropiadamente   
+    }
+}
+
+
+
+// dibujar_busqueda(data);
+
+
+// dibujar_busqueda(point);
+console.log("Punto a Tomar en consideracion: " , point);
+console.log("Obtener Altura del KDTree: ", getHeight(build_kdtree(data)));
+console.log("Punto mas cercano por fuerza bruta: ", closest_point_brute_force(data, point));
+// console.log("ss: ", naive_closest_point(data, point));
+console.log("Punto mas cercano por Naive Closest Point: ");
+console.log("Generacion de Dot: ",'\n', 'digraph G { \n',generate_dot(build_kdtree(data)),'}\n');
 
 
