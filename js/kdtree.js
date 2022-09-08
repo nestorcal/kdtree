@@ -138,7 +138,32 @@ function knn_fun(point) {
 function range_query_circle(node, center, radio, queue, depth = 0) {
 }
 
-function range_query_rec(node, ancho, alto, queue, depth = 0) {
+function range_query_rect ( node , center , hug , queue , depth = 0 ){
+	if (node==null) return null;
+
+	var axis = node.axis ;
+	var nb = null;
+	var ob = null;
+	
+	if (center[axis]<node.point[axis]){
+		nb=node.left;
+		ob=node.right;
+	} else {
+		nb=node.right;
+		ob=node.left;
+	}
+	var best=closer_point(center,node,range_query_rect(nb,center,hug,queue,depth+1));
+
+	if(Math.abs(center[axis]-node.point[axis])<=hug[axis]*2 || distanceSquared(center,best.point)>Math.abs(center[axis]-node.point[axis])){
+
+		if(Math.abs(center[0]-node.point[0])<=hug[0] && Math.abs(center[1]-node.point[1])<=hug[1]){
+
+			queue.push(node.point);
+		}
+		best=closer_point(center,best,range_query_rect(ob,center,hug,queue,depth+1));
+	}
+
+	return best ;
 }
 
 
