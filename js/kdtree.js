@@ -22,10 +22,31 @@ class Node {
 
 //Retorna la altura del  ́arbolt.
 function getHeight(node) {
+    if (node === null) {
+        return 0;
+    }    // find the height of each subtree
+    var lh = getHeight(node.left);
+    var rh = getHeight(node.right); 
+    return 1 + Math.max(lh, rh);
 }
 
 //Genera al  ́arbol en formato dot, por ejemplo:
 function generate_dot(node) {
+    // alert("prueba");
+    if (node === null) {
+        return "";
+    }
+    var tmp = ''; 
+    if (node.left != null) {
+        tmp += '"' + node.point.toString() + '"' + ' -> ' + '"' + node.left.point.toString() + '"' + ';\n';
+        tmp += generate_dot(node.left);
+    }
+    if (node.right != null) {
+        tmp += '"' + node.point.toString() + '"' + ' -> ' + '"' + node.right.point.toString() + '"' + ';\n';
+        tmp += generate_dot(node.right);
+    } 
+    
+    return tmp;
 }
 
 //Construye el KD-Tree y retorna el nodo raiz.
