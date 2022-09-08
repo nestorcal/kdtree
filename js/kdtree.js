@@ -103,8 +103,6 @@ function closest_point_brute_force(points, point) {
     } return best_point;
 }
 
-function naive_closest_point(node, point, depth = 0, best = null) {
-}
 
 function naive_closest_point(node, point, depth = 0, best = null) {
     //algorithm
