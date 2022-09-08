@@ -48,6 +48,18 @@ function setup() {
     renderTree(root);
     console.log("root:", root);
     console.log("data: ", data);
+
+    // dibujar_busqueda(data);
+
+
+    // dibujar_busqueda(point);
+    console.log("Punto a Tomar en consideracion: " , point);
+    console.log("Obtener Altura del KDTree: ", getHeight(build_kdtree(data)));
+    //console.log("Punto mas cercano por fuerza bruta: ", closest_point_brute_force(data, point));
+    // console.log("ss: ", naive_closest_point(data, point));
+    console.log("Punto mas cercano por Naive Closest Point: ");
+    console.log("Generacion de Dot: ",'\n', 'digraph G { \n',generate_dot(build_kdtree(data)),'}\n');
+
 }
 
 function renderTree(kdtree) {
