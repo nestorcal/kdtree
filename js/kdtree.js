@@ -74,6 +74,21 @@ function naive_closest_point(node, point, depth = 0, best = null) {
 }
 
 function closest_point(node, point, depth = 0) {
+    if ( node === null )
+	return null ;
+	var axis = depth % k ;
+	var next_branch = null ; //next node brach to look for
+	var opposite_branch = null ; //opposite
+	//node brach to look for
+	if ( point [ axis ] < node . point [ axis ]){
+	next_branch = node . left ;
+	opposite_branch = node . right ;
+	} else {
+	next_branch = node . right ;
+	opposite_branch = node . left ;
+	}
+	//YOUR CODE HERE
+	return best ;
 }
 
 function knn_fun(point) {
