@@ -60,6 +60,11 @@ function setup() {
     console.log("Punto mas cercano por Naive Closest Point: ");
     console.log("Generacion de Dot: ",'\n', 'digraph G { \n',generate_dot(build_kdtree(data)),'}\n');
 
+
+    d3.select("#graphdot").graphviz()
+    .renderDot('digraph G {'+generate_dot(build_kdtree(data))+'}');
+    
+    
 }
 
 function renderTree(kdtree) {
