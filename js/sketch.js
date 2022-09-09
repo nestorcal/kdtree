@@ -103,6 +103,9 @@ function renderTree(kdtree) {
         render(node.right, rightBounds,grosor-1);
     }
 
+
+
+    
 }
 
 

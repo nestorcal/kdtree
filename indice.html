@@ -1,0 +1,117 @@
+<html>
+
+<head>
+	<title> KD Tree </title>
+	<script src="js/p5.min.js"> </script>
+	<script src="js/kdtree.js"> </script>
+	<script src="js/sketch.js"> </script>
+	<script src="js/viz.js"> </script>
+	<script src="js/full.render.js"> </script>
+	<script src="js/graphviz.js"> </script>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
+    <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
+
+	<style>
+		body {
+			font-family: Ubuntu, Arial, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		}
+
+		.grid-container {
+			display: grid;
+			grid-template-columns: auto auto auto;
+			padding: 5px;
+		}
+
+		.grid-container>div {
+			text-align: center;
+			padding: 5px 0;
+		}
+
+		.btn_link {
+			color: white;
+			font-size: 16px;
+			background: #3498db;
+			padding: 10px 10px 10px 10px;
+			text-decoration: none;
+		}
+
+		.btn_link:hover {
+			background: #3cb0fd;
+			text-decoration: none;
+		}
+
+		pre code {
+			background-color: #eee;
+			border: 1px solid #999;
+			display: block;
+			padding: 20px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="grid-container">
+		<div class="grid-item" style="vertical-align: middle;">
+			<img id="logoUnsa" src="img/logo_unsa.jpg" width="200" alt="UNSA">
+		</div>
+		<div class="grid-item">
+			<p style="font-size: 18px;font-weight: bold;">
+				Universidad Nacional de San Agust&iacute;n<br />
+				Maestr&iacute;a en Ciencias de la Computaci&oacute;n<br />
+				Algoritmos y Estructura de Datos<br />
+			</p>
+		</div>
+		<div class="grid-item">
+			<p style="font-size: 18px;font-weight: bold;">
+				Grupo 09<br />
+				Pr&aacute;ctica 04<br />
+				KdTree<br />
+			</p>
+		</div>
+
+		<div class="grid-item">
+			<div style="text-align: center;font-weight: bold;"> Representaci&oacute;n visual </div>
+		</div>
+		<div class="grid-item">
+			<div style="text-align: center;font-weight: bold;"> Representaci&oacute;n &aacute;rbol </div>
+		</div>
+		<div class="grid-item">
+			<div style="text-align: center;font-weight: bold;"> Formato Dot </div>
+		</div>
+		<div class="grid-item">
+			<div id="kdtreeCanvas"></div>
+		</div>
+		<div class="grid-item">
+			<div id="graphdot"></div>
+		</div>
+		<div class="grid-item">
+			<pre>
+				<code id="DotText" style="text-align: left;">
+				</code>
+			</pre>
+		</div>
+		<div class="grid-item">&nbsp;</div>
+		<div class="grid-item">&nbsp;</div>
+		<div class="grid-item">&nbsp;</div>
+		<!--<div class="grid-item">&nbsp;7</div>
+		<div class="grid-item">&nbsp;8</div>
+		<div class="grid-item">&nbsp;9</div> -->
+</body>
+
+<!-- <script> 
+	// var viz = new Viz();
+
+	// viz.renderSVGElement('digraph { a -> b }')
+	// 	.then(function (element) {
+	// 		document.body.appendChild(element);
+	// 	})
+	// 	.catch(error => {
+	// 		viz = new Viz();
+	// 		console.error(error);
+	// 	});
+ </script> -->
+
+</html>

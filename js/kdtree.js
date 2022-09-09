@@ -257,7 +257,6 @@ function range_query_rect(node, center, hug, queue, depth = 0) {
     return best;
 }
 
-
 //Consultas 
 var point = [140, 90]; //punto que pensamos buscar
 
