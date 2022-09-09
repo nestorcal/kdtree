@@ -30,7 +30,7 @@ function setup() {
     }
 
     var data = [];
-    var total_puntos = 5
+    var total_puntos = 25
     for (let i = 0; i < total_puntos; i++) {
         var x = Math.floor(Math.random() * height);
         var y = Math.floor(Math.random() * height);
