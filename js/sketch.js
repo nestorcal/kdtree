@@ -16,7 +16,8 @@ points = [
 function setup() {
     width = 500;
     height = 400;
-    createCanvas(width, height);
+    let kdtreeCanvas = createCanvas(width, height);
+    kdtreeCanvas.parent("kdtreeCanvas");
 
     background(0);
     for (var x = 0; x < width; x += width / 10) {
@@ -29,7 +30,7 @@ function setup() {
     }
 
     var data = [];
-    var total_puntos = 10
+    var total_puntos = 25
     for (let i = 0; i < total_puntos; i++) {
         var x = Math.floor(Math.random() * height);
         var y = Math.floor(Math.random() * height);
