@@ -10,7 +10,8 @@ points = [
     [90, 40],                             //[70 ,130] ,
     [110, 100],                           //[90 ,40] ,
     [140, 110],                           //[110 , 100] ,
-    [160, 150]                            //[140 ,110] ,
+    [160, 100],                            //[140 ,110] ,
+    [150, 30]
 ];                                       //[160 , 100]
                                          // ];
 function setup() {
@@ -30,13 +31,13 @@ function setup() {
     }
 
     var data = [];
-    var total_puntos = 25
+    var total_puntos = 15
     for (let i = 0; i < total_puntos; i++) {
         var x = Math.floor(Math.random() * height);
         var y = Math.floor(Math.random() * height);
         data.push([x, y]);
     }
-    //data=points;          // editar esta linea para elegir entre varios puntos ramdon o usar puntos prueba
+    data=points;          // editar esta linea para elegir entre varios puntos ramdon o usar puntos prueba
     for (let i = 0; i < data.length; i++) {
         fill(255, 255, 255);
         circle(data[i][0], height - data[i][1], 7); // 200 -y para q se dibuje apropiadamente
