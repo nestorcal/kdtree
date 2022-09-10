@@ -44,6 +44,9 @@ function setup() {
         text('(' + data[i][0] + ',' + data[i][1] + ')', data[i][0] + 5, height - data[i][1]);// 200 -y para q se dibuje apropiadamente
     }
     var point = [140, 90]; // query
+    fill(255, 0, 0);
+    circle(point[0], height - point[1], 7);
+
 
     root = build_kdtree(data);
     renderTree(root);
@@ -54,10 +57,13 @@ function setup() {
 
 
     // dibujar_busqueda(point);
-    console.log("Punto a Tomar en consideracion: " , point);
+
     console.log("Obtener Altura del KDTree: ", getHeight(build_kdtree(data)));
-    //console.log("Punto mas cercano por fuerza bruta: ", closest_point_brute_force(data, point));
-    // console.log("ss: ", naive_closest_point(data, point));
+
+    console.log("Punto a Tomar en consideracion: " , point);
+
+    console.log("Punto mas cercano por fuerza bruta: ", closest_point_brute_force(data, point));
+    console.log("ss: ", naive_closest_point(data, point));
     console.log("Punto mas cercano por Naive Closest Point: ");
     console.log("Generacion de Dot: ",'\n', 'digraph G { \n',generate_dot(build_kdtree(data)),'}\n');
 
