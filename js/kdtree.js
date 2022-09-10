@@ -117,7 +117,6 @@ function naive_closest_point(node, point, depth = 0, best = null) {
     // console.log("axis",point[axis])
     // console.log("node axis",node.point[axis][1])
 
-
     var next_best = null; //next best point
     var next_branch = null; //next node brach to look for    
     if (best === null || (distanceSquared(best, point) > distanceSquared(node.point, point)))
