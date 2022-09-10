@@ -26,4 +26,4 @@ Complejidad
 - Insertar un nuevo punto en un árbol kd balanceado es de O(logn).
 - Eliminar un punto de un árbol kd balanceado es de O(logn).
 
-👉 https://josuemzx.github.io/kdtreeKnn/
+👉 https://nestorcal.github.io/kdtree/
