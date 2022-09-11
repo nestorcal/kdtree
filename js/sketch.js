@@ -4,6 +4,17 @@ var height
 var octx
 var ocanvas
 
+var pointForKnn = [150,300];
+var pointForCircleQuery=[350,150];
+var pointForRectangleQuery=[300,300];
+var radio=50;
+var colaCircle=[];
+var rectangleHW=[75,30];
+var colaRectangle=[];
+var kPuntos=3
+var data = [];
+var total_puntos = 30
+
 points = [
     [40, 70],
     [70, 130],
@@ -13,12 +24,47 @@ points = [
     [160, 100],
     [150, 30]
 ];
+var puntoQuery = [140, 90];
 
 function setup() {
+    let xBoton=20;
+    let espB=20;
+    let yBoton=570
     width = 500;
     height = 400;
     let kdtreeCanvas = createCanvas(width, height);
     kdtreeCanvas.parent("kdtreeCanvas");
+
+    button = createButton("Punto Prueba");
+    button.mouseClicked(puntoPruebaClickButton);
+    button.size(100, 21);
+    button.position(xBoton, yBoton);
+    button.style("font-family", "Comic Sans MS");
+    button.style("font-size", "11px");
+
+    input = createInput();
+    input.size(40);
+    input.position(xBoton+espB+100, yBoton);
+    button = createButton("Knn");
+    button.mouseClicked(knnClickButton);
+    button.size(50, 21);
+    button.position(xBoton+espB+140, yBoton);
+    button.style("font-family", "Comic Sans MS");
+    button.style("font-size", "12px");
+
+    button = createButton("Query Rectangle");
+    button.mouseClicked(queryRectangleClickButton);
+    button.size(110, 21);
+    button.position(xBoton+espB+210, yBoton);
+    button.style("font-family", "Comic Sans MS");
+    button.style("font-size", "11px");
+
+    button = createButton("Query circle");
+    button.mouseClicked(queryCircleClickButton);
+    button.size(110, 21);
+    button.position(xBoton+espB+340, yBoton);
+    button.style("font-family", "Comic Sans MS");
+    button.style("font-size", "11px");
 
     background(0);
     for (var x = 0; x < width; x += width / 10) {
@@ -30,8 +76,6 @@ function setup() {
         }
     }
 
-    var data = [];
-    var total_puntos = 15
     for (let i = 0; i < total_puntos; i++) {
         var x = Math.floor(Math.random() * height);
         var y = Math.floor(Math.random() * height);
@@ -44,41 +88,53 @@ function setup() {
         textSize(11);
         text('(' + data[i][0] + ',' + data[i][1] + ')', data[i][0] + 5, height - data[i][1]);// 200 -y para q se dibuje apropiadamente
     }
-    var point = [140, 90]; // query
-    var pointForKnn = [150,300];
-    var pointForCircleQuery=[350,150];
-    var pointForRectangleQuery=[300,300];
-    var radio=50;
-    var colaCircle=[];
-    var rectangleHW=[75,30];
-    var colaRectangle=[];
-
-    fill(255, 0, 0);
-    circle(point[0], height - point[1], 7);
-
-
     root = build_kdtree(data);
     renderTree(root);
     console.log("root:", root);
     console.log("data: ", data);
-
-    // dibujar_busqueda(data);
-    // dibujar_busqueda(point);
-
     console.log("Obtener Altura del KDTree: ", getHeight(build_kdtree(data)));
-    console.log("Punto a Tomar en consideracion: " , point);
-    console.log("Punto mas cercano por fuerza bruta: ", closest_point_brute_force(data, point),"Distancia: ",distanceSquared(point,closest_point_brute_force(data, point)));
-    console.log("Punto mas cercano por Naive Closest Point: ", naive_closest_point(root,point));
     console.log("Generacion de Dot: ",'\n', 'digraph G { \n',generate_dot(build_kdtree(data)),'}\n');
 
     d3.select("#graphdot").graphviz()
     .renderDot('digraph G {'+generate_dot(build_kdtree(data))+'}');
 
-    var kPuntos=3
-    knnQuery(root,pointForKnn,kPuntos);
-    circleQuery(root,pointForCircleQuery,radio,colaCircle);
-    rectangleQuery(root,pointForRectangleQuery,rectangleHW,colaRectangle);
+}
 
+function mouseClicked() {
+    fill(255, 0, 0);
+    ellipse(mouseX, mouseY, 5, 5);
+    textSize(11);
+
+    puntoQuery = [mouseX, height - mouseY];
+    pointForKnn= [mouseX, height - mouseY];
+    pointForRectangleQuery= [mouseX, height - mouseY];
+    pointForCircleQuery= [mouseX, height - mouseY];
+    fill(255, 255, 0);
+    text('(' + puntoQuery[0] + ',' + puntoQuery[1] + ')', puntoQuery[0] + 5, height -puntoQuery[1])
+    // prevent default
+    return false;
+}
+
+function puntoPruebaClickButton(){
+    if(mouseX==0){
+        fill(255, 0, 0);
+        circle(puntoQuery[0], height - puntoQuery[1], 7);
+    }
+    console.log("Punto a Tomar en consideracion: " , puntoQuery);
+    console.log("Punto mas cercano por fuerza bruta: ", closest_point_brute_force(data, puntoQuery),"Distancia: ",distanceSquared(puntoQuery,closest_point_brute_force(data, puntoQuery)));
+    console.log("Punto mas cercano por Naive Closest Point: ", naive_closest_point(root,puntoQuery));
+}
+
+function knnClickButton(){
+    if(input.value()!='')
+    kPuntos=input.value();
+    knnQuery(root,pointForKnn,kPuntos);
+}
+function queryRectangleClickButton(){
+    rectangleQuery(root,pointForRectangleQuery,rectangleHW,colaRectangle);
+}
+function queryCircleClickButton(){
+    circleQuery(root,pointForCircleQuery,radio,colaCircle)
 }
 
 function knnQuery(root,pointForKnn,kPuntos){
