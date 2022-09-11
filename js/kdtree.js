@@ -140,10 +140,10 @@ function closest_point(node, point, depth = 0) {
     //  4.  chose best distance between  (node.point, opposite_branch, point)
     if (node == null)
         return null;
-    //best = min(distanceSquared(node.point,point));
+
     var axis = depth % k;
-    var next_branch = null;   //next node branch to look for
-    var opposite_branch = null;   // opposite node branch to look for
+    var next_branch = null;  
+    var opposite_branch = null;  
 
     if (point[axis] < node.point[axis]) {
         next_branch = node.left;
