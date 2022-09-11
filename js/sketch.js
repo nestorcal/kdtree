@@ -45,6 +45,14 @@ function setup() {
         text('(' + data[i][0] + ',' + data[i][1] + ')', data[i][0] + 5, height - data[i][1]);// 200 -y para q se dibuje apropiadamente
     }
     var point = [140, 90]; // query
+    var pointForKnn = [150,300];
+    var pointForCircleQuery=[350,150];
+    var pointForRectangleQuery=[300,300];
+    var radio=50;
+    var colaCircle=[];
+    var rectangleHW=[75,30];
+    var colaRectangle=[];
+
     fill(255, 0, 0);
     circle(point[0], height - point[1], 7);
 
@@ -69,8 +77,41 @@ function setup() {
 
     d3.select("#graphdot").graphviz()
     .renderDot('digraph G {'+generate_dot(build_kdtree(data))+'}');
-    
-    
+
+    fill(0, 255, 0);
+    circle(pointForKnn[0], height - pointForKnn[1], 7);
+    var kPuntos=3
+    var punto_cercano = closest_n_points(root,pointForKnn,kPuntos);
+    //var punto_cercano = closest_point(root,pointForKnn);
+    for (var i = punto_cercano.length-1; i >= 0; i--)
+    {
+        fill(255,0,0);
+        circle(punto_cercano[i][0],height - punto_cercano[i][1], 7);
+    }
+    console.log("Resultado de KNN para :", kPuntos,"KPuntos. El Resultado es: ",punto_cercano);
+
+
+    fill(0, 255, 128);
+    circle(pointForCircleQuery[0], height - pointForCircleQuery[1], 5);
+    range_query_circle(root,pointForCircleQuery,radio,colaCircle);
+    fill(0,255,255,40)
+    circle(pointForCircleQuery[0], height - pointForCircleQuery[1], radio*2)
+    for ( let i = 0 ; i < colaCircle.length ; i ++){
+        fill(255,0,255);
+        circle(colaCircle[i][0],height-colaCircle[i][1],7);
+    }
+
+
+    fill(0, 255, 128);
+    circle(pointForRectangleQuery[0], height - pointForRectangleQuery[1], 5);
+    range_query_rect(root,pointForRectangleQuery,rectangleHW,colaRectangle);
+    fill(255,0,255,40);
+    rect(pointForRectangleQuery[0]-rectangleHW[0],height-pointForRectangleQuery[1]-rectangleHW[1],rectangleHW[0]*2,rectangleHW[1]*2)
+    for ( let i = 0 ; i < colaRectangle.length ; i ++){
+        fill(255,0,255);
+        circle(colaRectangle[i][0],height-colaRectangle[i][1],7);
+    }
+
 }
 
 function renderTree(kdtree) {
@@ -108,9 +149,6 @@ function renderTree(kdtree) {
         render(node.right, rightBounds,grosor-1);
     }
 
-
-
-    
 }
 
 

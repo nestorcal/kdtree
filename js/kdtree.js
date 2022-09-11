@@ -138,7 +138,6 @@ function closest_point(node, point, depth = 0) {
     //  2.  Chose best distance between (node.point,next_branch, point)
     //  3.  if (distance(point,best)>abs(point[axis]-node.point[axis])
     //  4.  chose best distance between  (node.point, opposite_branch, point)
-
     if (node == null)
         return null;
     //best = min(distanceSquared(node.point,point));
@@ -157,16 +156,10 @@ function closest_point(node, point, depth = 0) {
 
     if (distanceSquared(best.point, point) > Math.abs(point[node.axis] - node.point[axis])) {
         best2 = closer_point(point, closest_point(opposite_branch, point, depth + 1), node);
-
     }
     best = closer_point(point, best2, best);
 
     return best;
-
-
-}
-
-function knn_fun(point) {
 }
 
 function closest_n_points(node, point_2, cant_puntos) {
@@ -205,15 +198,11 @@ function range_query_circle(node, center, radio, queue, depth = 0) {
     var best = closer_point(center, node, range_query_circle(nb, center, radio, queue, depth + 1));
 
     if (Math.abs(center[axis] - node.point[axis]) <= radio || distanceSquared(center, best.point) > Math.abs(center[axis] - node.point[axis])) {
-
         if (distanceSquared(center, node.point) <= radio) {
-
             queue.push(node.point);
         }
-
         best = closer_point(center, best, range_query_circle(ob, center, radio, queue, depth + 1));
     }
-
     return best;
 }
 
