@@ -5,15 +5,15 @@ var octx
 var ocanvas
 
 points = [
-    [40, 70],                            // var data = [
-    [70, 130],                            //[40 ,70] ,
-    [90, 40],                             //[70 ,130] ,
-    [110, 100],                           //[90 ,40] ,
-    [140, 110],                           //[110 , 100] ,
-    [160, 100],                            //[140 ,110] ,
+    [40, 70],
+    [70, 130],
+    [90, 40],
+    [110, 100],
+    [140, 110],
+    [160, 100],
     [150, 30]
-];                                       //[160 , 100]
-                                         // ];
+];
+
 function setup() {
     width = 500;
     height = 400;
@@ -37,7 +37,7 @@ function setup() {
         var y = Math.floor(Math.random() * height);
         data.push([x, y]);
     }
-    data=points;          // editar esta linea para elegir entre varios puntos ramdon o usar puntos prueba
+    //data=points;          // editar esta linea para elegir entre varios puntos ramdon o usar puntos prueba
     for (let i = 0; i < data.length; i++) {
         fill(255, 255, 255);
         circle(data[i][0], height - data[i][1], 7); // 200 -y para q se dibuje apropiadamente
@@ -55,17 +55,15 @@ function setup() {
     console.log("data: ", data);
 
     // dibujar_busqueda(data);
-
-
     // dibujar_busqueda(point);
 
     console.log("Obtener Altura del KDTree: ", getHeight(build_kdtree(data)));
 
     console.log("Punto a Tomar en consideracion: " , point);
 
-    console.log("Punto mas cercano por fuerza bruta: ", closest_point_brute_force(data, point));
-    console.log("ss: ", naive_closest_point(data, point));
-    console.log("Punto mas cercano por Naive Closest Point: ");
+    console.log("Punto mas cercano por fuerza bruta: ", closest_point_brute_force(data, point),"Distancia: ",distanceSquared(point,closest_point_brute_force(data, point)));
+    console.log("Punto mas cercano por Naive Closest Point: ", naive_closest_point(root,point));
+
     console.log("Generacion de Dot: ",'\n', 'digraph G { \n',generate_dot(build_kdtree(data)),'}\n');
 
 

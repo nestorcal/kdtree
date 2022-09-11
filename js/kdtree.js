@@ -105,30 +105,19 @@ function closest_point_brute_force(points, point) {
 
 
 function naive_closest_point(node, point, depth = 0, best = null) {
-    //algorithm
-    //1. best = min(distance(point, node.point), best)
-    //2. chose the branch according to axis per level
-    //3. recursevely call by branch chosed    
-    if (node === null)
+    if (node === null) return best;
+    var dis = distanceSquared(node.point, point);
+    console.log("F Naive_Closest_Point- Punto Probado: ",node.point,"  , Distancia: ",dis);
+    if (best != null && distanceSquared(best, point) < dis) {
         return best;
-    var axis = depth % k;
+    } else {
+        if (node.point[node.axis] > point[node.axis]) {
+            return naive_closest_point(node.left, point, depth++, node.point);
+        } else {
+            return naive_closest_point(node.right, point, depth++, node.point);
+        }
+    }
 
-    // if (point[axis] < node.point[axis])
-    // console.log("axis",point[axis])
-    // console.log("node axis",node.point[axis][1])
-
-    var next_best = null; //next best point
-    var next_branch = null; //next node brach to look for    
-    if (best === null || (distanceSquared(best, point) > distanceSquared(node.point, point)))
-        next_best = node.point;
-    else
-        next_best = best;
-    // if (point[axis] < node.point[axis])
-    if (point[axis] < node.point[axis])
-        next_branch = node.left
-    else
-        next_branch = node.right
-    return naive_closest_point(next_branch, point, depth + 1, next_best);
 }
 
 function closer_point(point, p1, p2) {
