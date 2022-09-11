@@ -1,12 +1,8 @@
-//  KD-trees es una estructura de datos
-// cuyo objetivo es mejorar la complejidad computacional mediante un preproceso de los datos.
-//Los kd-trees son frecuentemente utilizados en bases de datos para satisfacer consultas que incluyan
-// valores de varios campos. Esto se puede extrapolar a las reglas de asociación, ya que se podrían realizar
-// consultas como se ha explicado en el ejemplo introductorio de reglas de asociación.
-//
-//
-//
-//
+//KD-tree es una estructura de datos
+//cuyo objetivo es mejorar la complejidad computacional mediante un preproceso de los datos.
+//Los kd-tree son frecuentemente utilizados en bases de datos para satisfacer consultas que incluyan
+//valores de varios campos. Esto se puede extrapolar a las reglas de asociación, ya que se podrían realizar
+//consultas como se ha explicado en el ejemplo introductorio de reglas de asociación.
 
 
 k = 2; //grado de profundidad
