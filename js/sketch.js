@@ -81,7 +81,7 @@ function setup() {
         var y = Math.floor(Math.random() * height);
         data.push([x, y]);
     }
-    //data=points;          // editar esta linea para elegir entre varios puntos ramdon o usar puntos prueba
+    //data=points;  // editar esta linea para elegir entre varios puntos ramdon o usar puntos prueba
     for (let i = 0; i < data.length; i++) {
         fill(255, 255, 255);
         circle(data[i][0], height - data[i][1], 7); // 200 -y para q se dibuje apropiadamente
@@ -111,7 +111,6 @@ function mouseClicked() {
     pointForCircleQuery= [mouseX, height - mouseY];
     fill(255, 255, 0);
     text('(' + puntoQuery[0] + ',' + puntoQuery[1] + ')', puntoQuery[0] + 5, height -puntoQuery[1])
-    // prevent default
     return false;
 }
 
