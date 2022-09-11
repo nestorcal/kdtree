@@ -141,7 +141,7 @@ function knnQuery(root,pointForKnn,kPuntos){
     fill(0, 255, 0);
     circle(pointForKnn[0], height - pointForKnn[1], 7);
 
-    var punto_cercano = closest_n_points(root,pointForKnn,kPuntos);
+    var punto_cercano = KNN(root,pointForKnn,kPuntos);
     //var punto_cercano = closest_point(root,pointForKnn);
     for (var i = punto_cercano.length-1; i >= 0; i--)
     {

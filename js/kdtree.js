@@ -4,7 +4,6 @@
 //valores de varios campos. Esto se puede extrapolar a las reglas de asociación, ya que se podrían realizar
 //consultas como se ha explicado en el ejemplo introductorio de reglas de asociación.
 
-
 k = 2; //grado de profundidad
 
 class Node {
@@ -26,9 +25,8 @@ function getHeight(node) {
     return 1 + Math.max(lh, rh);
 }
 
-//Genera al  arbol en formato dot, por ejemplo:
+//Genera al  arbol en formato dot
 function generate_dot(node) {
-    // alert("prueba");
     if (node === null) {
         return "";
     }
@@ -59,7 +57,7 @@ function build_kdtree(points, depth = 0) {
 
     var median = Math.floor(points.length / 2);
 
-// sort by the axis
+// Ordena por hojas
     points.sort(function (a, b) {
         return a[axis] - b[axis];
     });
@@ -130,10 +128,10 @@ function closer_point(point, p1, p2) {
 }
 
 function closest_point(node, point, depth = 0) {
-    //  1.  Set next_branch and opposite_branch to look for according to axis and level
-    //  2.  Chose best distance between (node.point,next_branch, point)
-    //  3.  if (distance(point,best)>abs(point[axis]-node.point[axis])
-    //  4.  chose best distance between  (node.point, opposite_branch, point)
+    //  1.  Se establecen next_branch y opposite_branch para buscar según el eje y el nivel.
+    //  2.  elije la distancia entre (node.point,next_branch, point).
+    //  3.  Si (distance(point,best)>abs(point[axis]-node.point[axis]).
+    //  4.  elije la mejor distancia entre  (node.point, opposite_branch, point).
     if (node == null)
         return null;
 
@@ -158,7 +156,7 @@ function closest_point(node, point, depth = 0) {
     return best;
 }
 
-function closest_n_points(node, point_2, cant_puntos) {
+function KNN(node, point_2, cant_puntos) {
     var closest_points = [];
     for (var i = cant_puntos - 1; i >= 0; i--) {
         punto = closest_point(node, point_2);
@@ -228,19 +226,6 @@ function range_query_rect(node, center, hug, queue, depth = 0) {
     }
 
     return best;
-}
-
-//Consultas 
-var point = [140, 90]; //punto que pensamos buscar
-
-function dibujar_busqueda(data) {
-    for (let i = 0; i < data.length; i++) {
-        fill(255, 0, 0);
-        // circle(x, height - y, 7); //200-y para q se dibuje apropiadamente
-        circle(data[i][0], height - data[i][1], 7); //200-y para q se dibuje apropiadamente
-        textSize(8);
-        text(data[i][0] + ',' + data[i][1], data[i][0] + 5, height - data[i][1]);//200-y para q se dibuje apropiadamente   
-    }
 }
 
 
