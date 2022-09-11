@@ -66,21 +66,25 @@ function setup() {
     // dibujar_busqueda(point);
 
     console.log("Obtener Altura del KDTree: ", getHeight(build_kdtree(data)));
-
     console.log("Punto a Tomar en consideracion: " , point);
-
     console.log("Punto mas cercano por fuerza bruta: ", closest_point_brute_force(data, point),"Distancia: ",distanceSquared(point,closest_point_brute_force(data, point)));
     console.log("Punto mas cercano por Naive Closest Point: ", naive_closest_point(root,point));
-
     console.log("Generacion de Dot: ",'\n', 'digraph G { \n',generate_dot(build_kdtree(data)),'}\n');
-
 
     d3.select("#graphdot").graphviz()
     .renderDot('digraph G {'+generate_dot(build_kdtree(data))+'}');
 
+    var kPuntos=3
+    knnQuery(root,pointForKnn,kPuntos);
+    circleQuery(root,pointForCircleQuery,radio,colaCircle);
+    rectangleQuery(root,pointForRectangleQuery,rectangleHW,colaRectangle);
+
+}
+
+function knnQuery(root,pointForKnn,kPuntos){
     fill(0, 255, 0);
     circle(pointForKnn[0], height - pointForKnn[1], 7);
-    var kPuntos=3
+
     var punto_cercano = closest_n_points(root,pointForKnn,kPuntos);
     //var punto_cercano = closest_point(root,pointForKnn);
     for (var i = punto_cercano.length-1; i >= 0; i--)
@@ -89,8 +93,8 @@ function setup() {
         circle(punto_cercano[i][0],height - punto_cercano[i][1], 7);
     }
     console.log("Resultado de KNN para :", kPuntos,"KPuntos. El Resultado es: ",punto_cercano);
-
-
+}
+function circleQuery(root,pointForCircleQuery,radio,colaCircle){
     fill(0, 255, 128);
     circle(pointForCircleQuery[0], height - pointForCircleQuery[1], 5);
     range_query_circle(root,pointForCircleQuery,radio,colaCircle);
@@ -100,8 +104,9 @@ function setup() {
         fill(255,0,255);
         circle(colaCircle[i][0],height-colaCircle[i][1],7);
     }
+}
 
-
+function rectangleQuery(root,pointForRectangleQuery,rectangleHW,colaRectangle){
     fill(0, 255, 128);
     circle(pointForRectangleQuery[0], height - pointForRectangleQuery[1], 5);
     range_query_rect(root,pointForRectangleQuery,rectangleHW,colaRectangle);
@@ -111,9 +116,7 @@ function setup() {
         fill(255,0,255);
         circle(colaRectangle[i][0],height-colaRectangle[i][1],7);
     }
-
 }
-
 function renderTree(kdtree) {
     grosor=5;
     render(kdtree, [[0, width], [0, height]],grosor);
