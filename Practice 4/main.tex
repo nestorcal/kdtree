@@ -119,13 +119,14 @@
 
     Para todo ello, el lenaguaje de programamción a usar será Java Script.
 	
- El repositorio Github se encuentra en el siguiente enlace \href{https://github.com/nestorcal/kdtree}{Estructura KD-Tree}.
+El repositorio Github se encuentra en el siguiente enlace \href{https://github.com/nestorcal/kdtree}{Estructura KD-Tree}.
+El video explicativo se encuentra en el siguiente enlace \href{https://github.com/nestorcal/kdtree}{Algoritmo Multidimencional KD-Tree-Grupo8}.
 	
 	\section{Estructuras de Datos Multidimensional}\label{sec:ejercicios}
 	\begin{enumerate}
 		\item \textbf{Estructura de datos KD-Tree}
 		
-			La estructura KD-Tree una estructura de datos de particionado del espacio que organiza los puntos en un Espacio euclídeo de k dimensiones.
+			La estructura KD-Tree es una estructura de datos de particionado del espacio que organiza los puntos en un Espacio euclídeo de k dimensiones.
 
 La Estructura KD-Tree se puede construir de la siguiente manera: 
 
@@ -309,6 +310,64 @@ La Estructura KD-Tree se puede construir de la siguiente manera:
 \includegraphics[width=1\textwidth]{Img/closest_point.png}
 \caption{función closest point}
 \end{figure}
+
+\begin{itemize}
+   \item Implemente la función KNN
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Img/KNN_kdtree.png}
+\caption{función KNN}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{Img/KNN_kdtree_ej.png}
+\caption{función KNN ejemplo}
+\end{figure}
+
+\begin{itemize}
+   \item Implemente la función range query circle
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.1\textwidth]{Img/range_circle.png}
+\caption{función range query circle}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Img/range_circle_ej.png}
+\caption{función range query circle ejemplo}
+\end{figure}
+
+\begin{itemize}
+   \item Implemente la función range query rec
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Img/range_rect.png}
+\caption{función range query rec}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Img/range_rect_ej.png}
+\caption{función range query rec ejemplo}
+\end{figure}
+
+\section{Conclusiones}
+
+\begin{itemize}
+   \item Se comprueba que mediante la implementación del Kdtree como estructura multidimensional, reduce el número de vecinos a buscar, al calcular la distancia del punto objetivo, técnica utilizada en el algoritmo KNN para clasificación en Machine learning.
+   \item El rendimiento de la estructura de datos en inversamente proporcional a la cantidad de los datos, y a su vez, la dimensionalidad del árbol, ya que al incrementar los datos y la dimencionalidad, se irá reduciendo el rendimiento, ya que  cuando se vuelve muy denso, puede haber intersecciones indeseadas con vecinos muy cercanos.
+   \item La implementación de algoritmo KD-Tree con tecnologías Html5, JavaScript. P5, ha sido muy intuitivo para comprender el comportamiento de datos multidimensional.
+
+\end{itemize}
+
     
 
     \end{enumerate}
