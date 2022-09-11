@@ -13,7 +13,7 @@ var rectangleHW=[75,30];
 var colaRectangle=[];
 var kPuntos=3
 var data = [];
-var total_puntos = 30
+var total_puntos = 15
 
 points = [
     [40, 70],
